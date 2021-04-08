@@ -25,7 +25,7 @@ SECRET_KEY = "django-insecure-kv_)qk86+sxqdoc*&k)katwp*_66)%(__(%y&-0sm$&11%%696
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['stark-crag-63771.herokuapp.com']
 
 
 # Application definition
