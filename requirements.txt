@@ -15,7 +15,6 @@ click-plugins
 click-repl
 colorama
 Django
-django-celery
 djangorestframework
 flake8
 Flask
