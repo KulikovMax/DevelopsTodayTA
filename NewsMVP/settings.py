@@ -88,11 +88,6 @@ WSGI_APPLICATION = "NewsMVP.wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "DevTodDB",
-        "USER": "DTtest",
-        "PASSWORD": "cvb",
-        "HOST": "localhost",
-        "PORT": "5432",
     }
 }
 
