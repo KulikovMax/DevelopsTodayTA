@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 import os
+import dj_database_url
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -20,12 +21,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = "django-insecure-kv_)qk86+sxqdoc*&k)katwp*_66)%(__(%y&-0sm$&11%%696"
+SECRET_KEY = os.environ.get('SECRET KEY')
+EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
 ALLOWED_HOSTS = ['stark-crag-63771.herokuapp.com']
+
 
 
 # Application definition
@@ -41,6 +45,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "users",
     "api",
+    "whitenoise.runserver_nostatic"
 ]
 
 MIDDLEWARE = [
@@ -51,7 +56,10 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware"
 ]
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = "NewsMVP.urls"
 
@@ -83,10 +91,14 @@ DATABASES = {
         "NAME": "DevTodDB",
         "USER": "DTtest",
         "PASSWORD": "cvb",
-        "HOST": "postgresql-regular-51916",
+        "HOST": "localhost",
         "PORT": "5432",
     }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=600)
+DATABASES['default'].update(db_from_env)
+
 
 
 # Password validation
