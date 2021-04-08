@@ -18,6 +18,7 @@ Django
 djangorestframework
 flake8
 Flask
+gunicorn
 httpie
 idna
 iniconfig
