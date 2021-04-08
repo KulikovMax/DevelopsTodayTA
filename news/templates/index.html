@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+</head>
+<body style="background-color: rgba(249, 167, 250, 0.6)">
+
+{% block content %}
+{% for el in news %}
+    {% csrf_token %}
+    <form action={% url "upvote" el.id%}>
+        {{ el.amount_of_upvotes }} <input type="submit" value="+" name="upvote">
+        By <b>{{ el.author_name }}</b> at {{ el.creation_date }}: <a href={{ el.link }}>{{ el.title }}</a>
+        <hr style="border-top: 1px dashed">
+    </form>
+    <a href={% url "all-comments" el.id%}>Comments</a>
+    <hr>
+    <br>
+{% endfor %}
+{% endblock %}
+</body>
+</html>

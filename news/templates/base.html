@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>News</title>
+</head>
+<body style="background-color: rgba(249, 167, 250, 0.6)">
+{% block mainmenu %}
+    <div style="background-color: magenta; width: auto; border-style: dashed; padding: 4px">
+        Hello, {{ user.username|default:'Guest' }}
+        {% if user.is_authenticated %}
+        <button style="float: right"><a href="{% url "logout" %}">Logout</a></button>
+        {% else %}
+        <button style="float: right"><a href="{% url "login" %}">Login</a></button>
+        {% endif %}
+    </div>
+    <nav style="border-style: solid; padding: 5px; margin-top: 5px; margin-bottom: 5px">
+    <button><a href={% url "index" %}>HOME</a></button>
+    <button><a href="{% url "create-news" %}">ADD</a></button>
+</nav>
+{% endblock %}
+{% block content %}
+{% endblock %}
+</body>
+</html>

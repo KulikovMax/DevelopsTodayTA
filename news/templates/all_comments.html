@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments at {{ news.title }}</title>
+</head>
+<body>
+{% block content %}
+    <a href={{ news.link }}>{{ news.title }}</a>
+    by {{ news.author_name }}
+    <hr>
+    There {% if comments.count <= 1 %} is {{ comments.count }} comment. <br>
+          {% else %} are {{ comments.count }} comments. <br>
+          {% endif %}
+    {% if user.is_authenticated %}
+    <form method="post" action={% url 'add-comment' news.id%}>
+    {% csrf_token %}
+        <textarea name="comment-text" cols="30" rows="10"></textarea>
+        <input type="submit" name="comment-submit">
+    </form>
+    {% else %}
+    <p style="color: red; border-style: dotted; border-color:black; width: 200px">
+        <b>You must be logged in to write comments.</b></p>
+    {% endif %}
+    {% for comment in comments %}
+        <p><b>{{ comment.author_name }}:</b> {{ comment.content }}</p> <br> <i>{{ comment.creation_date }}</i>
+    {% endfor %}
+{% endblock %}
+</body>
+</html>
