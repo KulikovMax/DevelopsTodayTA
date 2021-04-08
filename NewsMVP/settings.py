@@ -83,7 +83,7 @@ DATABASES = {
         "NAME": "DevTodDB",
         "USER": "DTtest",
         "PASSWORD": "cvb",
-        "HOST": "db",
+        "HOST": "postgresql-regular-51916",
         "PORT": "5432",
     }
 }
