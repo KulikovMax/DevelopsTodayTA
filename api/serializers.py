@@ -9,7 +9,7 @@ class CommentsSerializer(serializers.ModelSerializer):
 
 
 class NewsSerializer(serializers.ModelSerializer):
-    comments = CommentsSerializer(many=True)
+    comments = CommentsSerializer(many=True, default="")
 
     class Meta:
         model = News
