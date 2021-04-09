@@ -6,7 +6,7 @@ atomicwrites==1.4.0
 attrs==20.3.0
 billiard==3.6.4.0
 black==20.8b1
-celery==5.0.5
+celery
 certifi==2020.12.5
 chardet==4.0.0
 click==7.1.2
@@ -16,7 +16,7 @@ click-repl==0.1.6
 colorama==0.4.4
 dj-database-url==0.5.0
 Django==3.2
-django-celery==3.3.1
+django-celery
 djangorestframework==3.12.4
 flake8==3.9.0
 Flask==1.0

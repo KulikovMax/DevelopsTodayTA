@@ -27,9 +27,11 @@ class NewsSerializer(serializers.ModelSerializer):
         fields = instance._meta.fields
         exclude = []
         for field in fields:
-            field = field.name.split('.')[-1]
+            field = field.name.split(".")[-1]
             if field in exclude:
                 continue
-            exec("instance.%s = validated_data.get(field, instance.%s)" % (field, field))
+            exec(
+                "instance.%s = validated_data.get(field, instance.%s)" % (field, field)
+            )
         instance.save()
         return instance
