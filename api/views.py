@@ -10,8 +10,7 @@ class NewsList(generics.ListCreateAPIView):
     serializer_class = NewsSerializer
 
     def perform_create(self, serializer):
-        news = News.objects.get(pk=serializer.data['id'])
-        comments = Comments.objects.filter(news=news)
+        comments = []
         if serializer.is_valid():
             serializer.save(comments=comments)
 
